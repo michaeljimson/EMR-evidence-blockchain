@@ -1,0 +1,615 @@
+<?xml version="1.0" standalone="no"?>
+<?xml-stylesheet type='text/xsl' href='TWCDA.xsl'?>
+<?blueprint schematron='050_腦死評估表.sch'?>
+<ClinicalDocument classCode="DOCCLIN" moodCode="EVN" xmlns="urn:hl7-org:v3" xmlns:voc="urn:hl7-org:v3/voc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd">
+  <!--
+        ********************************************************
+        CDA Header
+        ********************************************************
+  -->
+  <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040" />
+  <templateId extension="level 1" root="2.16.840.1.113883.2.33.10.50.1" />
+  <templateId extension="level 2" root="2.16.840.1.113883.2.33.10.50.2" />
+  <templateId extension="level 3" root="2.16.840.1.113883.2.33.10.50.3" />
+  <!--系統產生唯一編碼
+        1. 每產生一份文件都需指定新的OID。
+        2. 若以台大為例，台大之OID為2.16.886.111.100000.100000。若規定病歷文件編碼由2.16.886.111.100000.100000.1控制時。
+  -->
+  <id extension="c266" root="2.16.886.111.100000.100000.1" />
+  <!--表示本文件為腦死評估表-->
+  <code code="47046-8" codeSystem="2.16.840.1.113883.6.1" displayName="Summary of death" codeSystemName="LOINC" />
+  <title>腦死評估表</title>
+  <!-- 文件列印日期 格式為 : YYYY[MM[DD[HH[MM[SS]]]]]  之後日期與時間格式將不再做敘述-->
+  <effectiveTime value="20091125042706" />
+  <confidentialityCode />
+  <!-- 語言碼 -->
+  <languageCode code="zh-TW" />
+  <setId />
+  <versionNumber value="1" />
+  <!-- 本文件之病患資料 -->
+  <recordTarget typeCode="RCT" contextControlCode="OP">
+    <patientRole classCode="PAT">
+      <!--病歷號碼
+            @extension : 在該院之病歷號
+            @root : 該院之OID
+      -->
+      <id extension="123456" root="2.16.886.111.100000.100000.2" />
+      <!--地址-->
+      <addr>台北縣三峽鎮大智路100號10樓之10</addr>
+      <!--電話號碼-->
+      <telecom use="H" value="(02) 12345678" />
+      <!--電話號碼-->
+      <telecom use="WP" value="(02) 12345678" />
+      <!--電話號碼-->
+      <telecom use="MC" value="921111998" />
+      <!--電子郵件-->
+      <telecom use="" value="mailto:22223333@gmail.com" />
+      <!-- 病患基本資料 -->
+      <patient classCode="PSN" determinerCode="INSTANCE">
+        <!--身份證號(護照號碼)
+               @extension : 此病患之身分證字號
+               @root : 2.16.886.101.20003.20001（內政部），若規定身分證字號編碼由2.16.886.101.20003.20001.9控制時。
+         -->
+        <id extension="A123456789" root="2.16.886.101.20003.20001.9" />
+        <!--姓名-->
+        <name>張三</name>
+        <!--性別
+               @code : 性別代碼
+               @codeSystem : 2.16.840.1.113883.5.1 (HL7 Vocabulary OID)
+         -->
+        <administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1" />
+        <!--生日(年齡)-->
+        <birthTime value="20000101" />
+        <!--婚姻狀態
+               @code : 婚姻代碼
+               @codeSystem : 2.16.840.1.113883.5.2 (HL7 Vocabulary OID)
+         -->
+        <maritalStatusCode code="M" codeSystem="2.16.840.1.113883.5.2" />
+        <!--宗教-->
+        <religiousAffiliationCode code="1050" codeSystem="2.16.840.1.113883.5.1076" />
+        <!--國籍-->
+        <ethnicGroupCode code="2135-2" codeSystem="2.16.840.1.113883.5.50" />
+        <birthplace classCode="BIRTHPL">
+          <place classCode="PLC" determinerCode="INSTANCE">
+            <addr>台灣台北市</addr>
+          </place>
+        </birthplace>
+        <languageCommunication>
+          <languageCode code="2135-2" />
+        </languageCommunication>
+      </patient>
+      <!--醫事機構 
+            @extension : 醫事機構代碼
+            @root : 2.16.886.101.20003.20014 （衛生署），若規定醫事機構代碼由2.16.886.101.20003.20014.9控制時。
+      -->
+      <providerOrganization classCode="ORG" determinerCode="INSTANCE">
+        <!--病患就診醫院代碼-->
+        <id extension="10004331121" root="2.16.886.101.20003.20014.9" />
+        <!--病患所屬醫院名稱-->
+        <name>台大醫院</name>
+      </providerOrganization>
+    </patientRole>
+  </recordTarget>
+  <!-- author1 -->
+  <author typeCode="AUT" contextControlCode="OP">
+    <!--author1記錄日期時間-->
+    <time value="20010101" />
+    <assignedAuthor classCode="ASSIGNED">
+      <!--author1醫院代碼-->
+      <id extension="H0001" root="2.16.886.111.100000.100000.3" />
+      <!--author1卡碼-->
+      <id extension="H23456" root="2.16.886.101.20003.20014.1" />
+      <!--author1證號-->
+      <id extension="H12345" root="2.16.886.101.20003.20014.2" />
+      <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+        <!--author1姓名-->
+        <name>范醫師</name>
+      </assignedPerson>
+      <representedOrganization classCode="ORG" determinerCode="INSTANCE">
+        <!--author1所屬單位碼-->
+        <id extension="101" root="2.16.886.111.100000.100000.5" />
+        <!--author1所屬單位-->
+        <name>急診部</name>
+      </representedOrganization>
+    </assignedAuthor>
+  </author>
+  <!-- 本文件保管單位 -->
+  <custodian typeCode="CST">
+    <assignedCustodian classCode="ASSIGNED">
+      <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+        <id />
+      </representedCustodianOrganization>
+    </assignedCustodian>
+  </custodian>
+  <!-- legalAuthenticator -->
+  <legalAuthenticator typeCode="LA" contextControlCode="OP">
+    <!--legalAuthenticator審核日期時間-->
+    <time value="20000408" />
+    <signatureCode code="S" />
+    <assignedEntity classCode="ASSIGNED">
+      <!--legalAuthenticator醫院代碼-->
+      <id extension="KP00017" root="2.16.886.111.100000.100000.3" />
+      <!--legalAuthenticator卡碼-->
+      <id extension="hca000411" root="2.16.886.101.20003.20014.1" />
+      <!--legalAuthenticator專業證號-->
+      <id extension="hca000412" root="2.16.886.101.20003.20014.2" />
+      <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+        <!--legalAuthenticator姓名-->
+        <name>賴醫師</name>
+      </assignedPerson>
+      <representedOrganization classCode="ORG" determinerCode="INSTANCE">
+        <!--legalAuthenticator所屬單位碼-->
+        <id extension="101" root="2.16.886.111.100000.100000.5" />
+        <!--legalAuthenticator所屬單位-->
+        <name>急診部</name>
+      </representedOrganization>
+    </assignedEntity>
+  </legalAuthenticator>
+  <!--authenticator1 -->
+  <authenticator typeCode="AUTHEN">
+    <!--Authenticator1審核日期時間-->
+    <time value="20010101" />
+    <signatureCode code="S" />
+    <assignedEntity classCode="ASSIGNED">
+      <!--Authenticator1醫院代碼-->
+      <id extension="D0001" root="2.16.886.111.100000.100000.3" />
+      <!--Authenticator1醫事人員卡碼-->
+      <id extension="hca000511" root="2.16.886.101.20003.20014.1" />
+      <!--Authenticator1醫事人員專業證號-->
+      <id extension="hca000512" root="2.16.886.101.20003.20014.2" />
+      <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+        <!--Authenticator1姓名-->
+        <name>陳醫生</name>
+      </assignedPerson>
+      <representedOrganization classCode="ORG" determinerCode="INSTANCE">
+        <!--Authenticator1所屬單位碼-->
+        <id extension="104" root="2.16.886.111.100000.100000.5" />
+        <!--Authenticator1單位-->
+        <name>外科</name>
+      </representedOrganization>
+    </assignedEntity>
+  </authenticator>
+  <!--authenticator2-->
+  <authenticator typeCode="AUTHEN">
+    <!--Authenticator2審核日期時間-->
+    <time value="20010102" />
+    <signatureCode code="S" />
+    <assignedEntity classCode="ASSIGNED">
+      <!--Authenticator2醫院代碼-->
+      <id extension="D0002" root="2.16.886.111.100000.100000.3" />
+      <!--Authenticator2醫事人員卡碼-->
+      <id extension="D83456" root="2.16.886.101.20003.20014.1" />
+      <!--Authenticator2醫事人員專業證號-->
+      <id extension="D82345" root="2.16.886.101.20003.20014.2" />
+      <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+        <!--Authenticator2姓名-->
+        <name>李醫師</name>
+      </assignedPerson>
+      <representedOrganization classCode="ORG" determinerCode="INSTANCE">
+        <!--Authenticator2所屬單位碼-->
+        <id extension="105" root="2.16.886.111.100000.100000.5" />
+        <!--Authenticator2單位-->
+        <name>內科</name>
+      </representedOrganization>
+    </assignedEntity>
+  </authenticator>
+  <!-- 配偶 -->
+  <!--ParticipationType typeCode='NOT' => 'urgent notification contact'-->
+  <participant typeCode="NOT" contextControlCode="OP">
+    <!--RoleClassAssociative classCode='NOK' => 'next of kin'-->
+    <associatedEntity  classCode="NOK">
+      <code code="SPS" codeSystem="2.16.840.1.113883.5.111" />
+      <associatedPerson classCode="PSN" determinerCode="INSTANCE">
+        <!--配偶-->
+        <name>配偶姓名</name>
+      </associatedPerson>
+    </associatedEntity >
+  </participant>
+  <!-- 緊急聯絡人資料1 -->
+  <!--ParticipationType typeCode='NOT' => 'urgent notification contact'-->
+  <participant typeCode="NOT" contextControlCode="OP">
+    <!--RoleClassAssociative classCode='ECON' => 'emergency contact'-->
+    <associatedEntity  classCode="ECON">
+      <!--緊急聯絡人資料1-與病人關係RoleCode code='FTH' => Father-->
+      <code code="FTH" codeSystem="2.16.840.1.113883.5.111" />
+      <!--elecom的data type是set<TEL>有2個components，use用來表示用途，use='H' =>  home，WP =>office address，MC=>moves and stays with its owne-->
+      <telecom use="H" value="22225555" />
+      <telecom use="WP" value="22225554" />
+      <telecom use="MC" value="0911111111" />
+      <telecom use="" value="mailto:22225555@gmail.com" />
+      <associatedPerson classCode="PSN" determinerCode="INSTANCE">
+        <name>張爸</name>
+      </associatedPerson>
+    </associatedEntity >
+  </participant>
+  <!-- 緊急聯絡人資料2 -->
+  <!--ParticipationType typeCode='NOT' => 'urgent notification contact'-->
+  <participant typeCode="NOT" contextControlCode="OP">
+    <!--RoleClassAssociative classCode='ECON' => 'emergency contact'-->
+    <associatedEntity  classCode="ECON">
+      <!--緊急聯絡人資料2-與病人關係RoleCode code='FTH' => Father-->
+      <code code="MTH" codeSystem="2.16.840.1.113883.5.111" />
+      <!--elecom的data type是set<TEL>有2個components，use用來表示用途，use='H' =>  home，WP =>office address，MC=>moves and stays with its owne-->
+      <telecom use="H" value="22225556" />
+      <telecom use="WP" value="22225557" />
+      <telecom use="MC" value="0911111112" />
+      <telecom use="" value="mailto:22226666@gmail.com" />
+      <associatedPerson classCode="PSN" determinerCode="INSTANCE">
+        <name>張媽</name>
+      </associatedPerson>
+    </associatedEntity >
+  </participant>
+  <componentOf typeCode="COMP">
+    <encompassingEncounter classCode="ENC" moodCode="EVN">
+      <!-- 就診日期 -->
+      <effectiveTime value="20000101" />
+      <!-- 科別與病床 -->
+      <location typeCode="LOC">
+        <!-- 科別 -->
+        <healthCareFacility classCode="SDLOC">
+          <location classCode="PLC" determinerCode="INSTANCE">
+            <!--科別-->
+            <name>急診部</name>
+            <!--床號-->
+            <addr>001</addr>
+          </location>
+        </healthCareFacility>
+      </location>
+    </encompassingEncounter>
+  </componentOf>
+  <!--
+        ********************************************************
+        CDA Body Level 2 
+        ********************************************************
+  -->
+  <component typeCode="COMP" contextConductionInd="true">
+    <structuredBody classCode="DOCBODY" moodCode="EVN">
+      <!--
+        通用服務記錄
+        ********************************************************
+        History of hospitalizations+History of outpatient visits
+        ********************************************************
+      -->
+      <component typeCode="COMP" contextConductionInd="true">
+        <section classCode="DOCSECT" moodCode="EVN">
+          <code code="46240-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of hospitalizations+History of outpatient visits" />
+          <title>通用服務記錄</title>
+          <text>
+            <list>
+              <item>病患來源：外件</item>
+              <item>初診日期：</item>
+              <item>初診科別：</item>
+              <item>腦死判定流水編號：123456</item>
+            </list>
+          </text>
+        </section>
+      </component>
+      <!--
+        生命徵象(一)
+        ********************************************************
+        Vital Signs(Physical findings)
+        ********************************************************
+      -->
+      <component typeCode="COMP" contextConductionInd="true">
+        <section classCode="DOCSECT" moodCode="EVN">
+          <code code="8716-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Vital Signs(Physical findings)" />
+          <title>生命徵象(一)</title>
+          <text>
+            <list>
+              <item>體溫：</item>
+              <item>脈搏：</item>
+              <item>血壓：</item>
+              <item>收縮壓：</item>
+              <item>舒張壓：</item>
+            </list>
+          </text>
+        </section>
+      </component>
+      <!--
+        原發性疾病(一)
+        ********************************************************
+        Diagnosis
+        ********************************************************
+      -->
+      <component typeCode="COMP" contextConductionInd="true">
+        <section classCode="DOCSECT" moodCode="EVN">
+          <code code="29548-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis" />
+          <title>原發性疾病(一)</title>
+          <text>描述...</text>
+        </section>
+      </component>
+      <!--
+        導致昏迷的可能原因及昏迷發生時間(一)
+        ********************************************************
+        Diagnosis.preliminary
+        ********************************************************
+      -->
+      <component typeCode="COMP" contextConductionInd="true">
+        <section classCode="DOCSECT" moodCode="EVN">
+          <code code="44833-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis.preliminary" />
+          <title>導致昏迷的可能原因及昏迷發生時間(一)</title>
+          <text>
+            <list>
+              <item>描述…</item>
+              <item>使用呼吸器時間：time</item>
+            </list>
+          </text>
+        </section>
+      </component>
+      <!--
+        用藥記錄(一)
+        ********************************************************
+        History of medication use
+        ********************************************************
+      -->
+      <component typeCode="COMP" contextConductionInd="true">
+        <section classCode="DOCSECT" moodCode="EVN">
+          <code code="10160-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of medication use" />
+          <title>用藥記錄(一)</title>
+          <text>
+            <list>
+              <item>藥名：</item>
+              <item>劑量：</item>
+              <item>用藥方式：</item>
+              <item>最後一次給藥時間：</item>
+              <item>其他：</item>
+            </list>
+          </text>
+        </section>
+      </component>
+      <!--
+        相關檢查項目所得資料及數據(一)
+        ********************************************************
+        Reference lab test results
+        ********************************************************
+      -->
+      <component typeCode="COMP" contextConductionInd="true">
+        <section classCode="DOCSECT" moodCode="EVN">
+          <code code="19146-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Reference lab test results" />
+          <title>相關檢查項目所得資料及數據(一)</title>
+          <text>記錄內容：</text>
+        </section>
+      </component>
+      <!--
+        生命徵象(二)
+        ********************************************************
+        Vital Signs(Physical findings)
+        ********************************************************
+      -->
+      <component typeCode="COMP" contextConductionInd="true">
+        <section classCode="DOCSECT" moodCode="EVN">
+          <code code="8716-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Vital Signs(Physical findings)" />
+          <title>生命徵象(二)</title>
+          <text>
+            <list>
+              <item>體溫：</item>
+              <item>脈搏：</item>
+              <item>血壓：</item>
+              <item>收縮壓：</item>
+              <item>舒張壓：</item>
+            </list>
+          </text>
+        </section>
+      </component>
+      <!--
+        昏迷量表(二)
+        ********************************************************
+        Data handling and record keeping section 
+        ********************************************************
+      -->
+      <component typeCode="COMP" contextConductionInd="true">
+        <section classCode="DOCSECT" moodCode="EVN">
+          <code code="35524-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Data handling and record keeping section " />
+          <title>昏迷量表(二)</title>
+          <text>
+            <list>
+              <item>眼球運動：</item>
+              <item>言語反應：</item>
+              <item>四肢運動：</item>
+              <item>總分：</item>
+              <item>深度昏迷發生時間：</item>
+              <item>開始使用呼吸器時間：</item>
+            </list>
+          </text>
+        </section>
+      </component>
+      <!--
+        昏迷原因(二)
+        ********************************************************
+        Chief complaint+Reason for visit 
+        ********************************************************
+      -->
+      <component typeCode="COMP" contextConductionInd="true">
+        <section classCode="DOCSECT" moodCode="EVN">
+          <code code="46239-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Chief complaint+Reason for visit " />
+          <title>昏迷原因(二)</title>
+          <text>
+            <list>
+              <item>神經外科手術</item>
+              <item>頭部外偒</item>
+              <item>蜘蛛膜下出血</item>
+              <item>腦出血</item>
+              <item>腦梗塞</item>
+              <item>腦瘤</item>
+              <item>腦腫瘍</item>
+              <item>神經系統感染</item>
+              <item>腦缺氧</item>
+              <item>低體溫</item>
+              <item>代謝性或內分泌障礙</item>
+              <item>藥物中毒</item>
+              <item>其他：</item>
+              <item>不明原因</item>
+            </list>
+          </text>
+        </section>
+      </component>
+      <!--
+        徵象存在，記錄其發生時間(二)
+        ********************************************************
+        Medical record no.
+        ********************************************************
+      -->
+      <component typeCode="COMP" contextConductionInd="true">
+        <section classCode="DOCSECT" moodCode="EVN">
+          <code code="46106-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Medical record no." />
+          <title>徵象存在，記錄其發生時間(二)</title>
+          <text>
+            <list>
+              <item>依賴人工呼吸器：否/是：time</item>
+              <item>自發性運動：否/是：time</item>
+              <item>去皮質或去大腦之異常身體姿勢：否/是：time</item>
+              <item>癲癇性抽搐：否/是：time</item>
+            </list>
+          </text>
+        </section>
+      </component>
+      <!--
+        腦幹反射測試(二)
+        ********************************************************
+        Physical findings 
+        ********************************************************
+      -->
+      <component typeCode="COMP" contextConductionInd="true">
+        <section classCode="DOCSECT" moodCode="EVN">
+          <code code="10199-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Physical findings " />
+          <title>腦幹反射測試(二)</title>
+          <text>
+            <list>
+              <item>頭－眼反射：無/有/不能確定：（原因：　　）</item>
+              <item>瞳孔對光反射：無/有/不能確定：（原因：　　）</item>
+              <item>眼角膜反射：無/有/不能確定：（原因：　　）</item>
+              <item>前庭－動眼反射：無/有/不能確定：（原因：　　）</item>
+              <item>對任何身體任何部位之疼痛剌激，在顱神經分佈範圍區內引起運動性反應：無/有/不能確定：（原因：　　）</item>
+              <item>刺激支氣管時之作嘔或咳嗽反射：無/有/不能確定：（原因：　　）</item>
+            </list>
+          </text>
+        </section>
+      </component>
+      <!--
+        生命徵象(三)
+        ********************************************************
+        Vital Signs(Physical findings)
+        ********************************************************
+      -->
+      <component typeCode="COMP" contextConductionInd="true">
+        <section classCode="DOCSECT" moodCode="EVN">
+          <code code="8716-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Vital Signs(Physical findings)" />
+          <title>生命徵象(三)</title>
+          <text>
+            <list>
+              <item>體溫：</item>
+              <item>脈搏：</item>
+              <item>日期：</item>
+              <item>時間：</item>
+            </list>
+          </text>
+        </section>
+      </component>
+      <!--
+        完全符合先決條件(三)
+        ********************************************************
+        Plan of treatment
+        ********************************************************
+      -->
+      <component typeCode="COMP" contextConductionInd="true">
+        <section classCode="DOCSECT" moodCode="EVN">
+          <code code="27573-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Plan of treatment" />
+          <title>完全符合先決條件(三)</title>
+          <text>Y/N</text>
+        </section>
+      </component>
+      <!--
+        完全排除可逆性的昏迷(三)
+        ********************************************************
+        Plan of treatment
+        ********************************************************
+      -->
+      <component typeCode="COMP" contextConductionInd="true">
+        <section classCode="DOCSECT" moodCode="EVN">
+          <code code="27573-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Plan of treatment" />
+          <title>完全排除可逆性的昏迷(三)</title>
+          <text>Y/N</text>
+        </section>
+      </component>
+      <!--
+        觀察時間(三)
+        ********************************************************
+        Medical record no.
+        ********************************************************
+      -->
+      <component typeCode="COMP" contextConductionInd="true">
+        <section classCode="DOCSECT" moodCode="EVN">
+          <code code="46106-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Medical record no." />
+          <title>觀察時間(三)</title>
+          <text>Time</text>
+        </section>
+      </component>
+      <!--
+        確認下列情形(三)
+        ********************************************************
+        Medical record no.
+        ********************************************************
+      -->
+      <component typeCode="COMP" contextConductionInd="true">
+        <section classCode="DOCSECT" moodCode="EVN">
+          <code code="46106-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Medical record no." />
+          <title>確認下列情形(三)</title>
+          <text>
+            <list>
+              <item>昏迷指數三分：是/否</item>
+              <item>依賴人工呼吸器：是/否</item>
+              <item>自發動作：無 Absent/有 Present</item>
+              <item>去皮質或去大腦之異常身體姿勢：無 Absent/有 Present</item>
+              <item>癲癎性抽搐：無 Absent/有 Present</item>
+            </list>
+          </text>
+        </section>
+      </component>
+      <!--
+        腦幹反射測試(三)
+        ********************************************************
+        Physical findings 
+        ********************************************************
+      -->
+      <component typeCode="COMP" contextConductionInd="true">
+        <section classCode="DOCSECT" moodCode="EVN">
+          <code code="10199-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Physical findings " />
+          <title>腦幹反射測試(三)</title>
+          <text>
+            <list>
+              <item>(A) 若某些項目無法測試，明述其理由：</item>
+              <item>(B)確認腦幹反射消失：</item>
+              <item>頭、眼反射：無 Absent/有 Present</item>
+              <item>瞳孔對光反射：無 Absent/有 Present</item>
+              <item>眼角膜反射：無 Absent/有 Present</item>
+              <item>前庭、動眼反射：無 Absent/有 Present</item>
+              <item>對身體任何部位之疼痛刺激，在顱神經分佈區範圍內引起運動性反應：無 Absent/有 Present</item>
+              <item>插入導管刺激支氣管時，引起作嘔或咳嗽之反應：無 Absent/有 Present</item>
+            </list>
+          </text>
+        </section>
+      </component>
+      <!--
+        測試無自行呼吸(三)
+        ********************************************************
+        Activity 
+        ********************************************************
+      -->
+      <component typeCode="COMP" contextConductionInd="true">
+        <section classCode="DOCSECT" moodCode="EVN">
+          <code code="11620-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Activity " />
+          <title>測試無自行呼吸(三)</title>
+          <text>
+            <list>
+              <item>由人工呼吸器供應100%氧氣10分鐘：是/否</item>
+              <item>給予 95%氧氣加 5%二氧化碳 5分鐘使測試前動脈血中PaCO2達到40mmHg以上：是/否</item>
+              <item>取除人工呼吸器，並由氣管內管供應 100%氧氣，每分鐘供應 6 公升：是/否</item>
+              <item>觀察 10 分鐘，並檢測動脈血中氣體以確定最後血中 PaCO2 達到 60mmHg 以上：是/否</item>
+              <item>確認病人無法自行呼吸：是/否</item>
+            </list>
+          </text>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>

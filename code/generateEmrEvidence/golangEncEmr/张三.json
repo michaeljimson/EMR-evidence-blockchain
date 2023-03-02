@@ -1,0 +1,10 @@
+{
+	"emrname": "张三",
+	"patientID": "111111111111111111",
+	"doctorname": "李四",
+	"doctorid": "123123123123",
+	"emrhash": "b5870a5c5421d3ab91c0201180310be3ff7fa55e924a052ff0acd14e7b73d447b7902323e86618f9fad3e0943088bac7cb9d14665152ce9ac7fc6f2a814542cc8a7b329970533a94a001d2e487a42b8f6f6e5cc6b743ca91d4e4744cec2dfffc8d1b6564929beb31c08761ca16a765d895f5315220de675783a9ddaec083c75132ed74c958a56d226917c3cef568aad1",
+	"emrsignpubkey": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEt8M3rqmAkjTGeMGnDf1WUoSlmLl3bFkaH/srVtdSXBcHiWTUIL/Aas6LkoOqOsnanFhKrWXDGISu9TklQqSFnA==",
+	"emrdetial": "这是一份张三的电子病历",
+	"LoginTime": "2022-09-18T14:27:30.386755+08:00"
+}

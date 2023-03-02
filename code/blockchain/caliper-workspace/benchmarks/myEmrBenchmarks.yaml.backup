@@ -1,0 +1,52 @@
+test:
+  # test.name 表示要在报告中显示的benchmark的短名称
+  name: emr-contract-benchmark
+  # test.description表示要在报告中显示的benchmark的详细说明
+  description: A test benchmark
+  # test.workers表示与工作线程相关的对象配置
+  workers:
+    type: local
+    # test.workers.number指定用于执行工作负载的工作进程数
+    number: 6
+  # test.rounds对象回合数组，一个数组下可以有多轮不同的测试任务
+  rounds:
+    # test.rounds[i].label该轮测试的名称，通常对应于该轮要提交的测试的类型
+    - label: createEmr
+      # test.rounds[i].txNumber应在该轮测试提交的任务数
+
+      description: Read asset benchmark
+      # test.rounds[i].txDuration该轮提交任务数的用时（单位，秒）
+      txDuration: 30
+      # test.round[i].rateControl描述该轮的速率控制策略
+      rateControl: 
+        # fixed-rate固定速率控制器
+        # fixed-load固定负载率控制器用于以目标负载（积压事务）驱动测试的控制器
+        type: fixed-load
+        opts:
+          transactionLoad: 5
+      # test.rounds[i].workload描述该轮的工作负载模块
+      workload:
+        # test.rounds[i].workload.module 该轮基准测试工作负载模块实现的路径
+        module: workload/createEmr.js
+        # test.rounds[i].workload.arguments 作为配置，传递给该轮工作负载模块的参数
+        arguments: 
+          emrs: 500
+          contractId: emr
+    - label: Query a emr
+      txDuration: 30
+      rateControl:
+        type: fixed-load
+        opts:
+          transactionLoad: 5
+      workload:
+        module: workload/queryEmr.js
+        arguments:
+          emrs: 500
+
+monitors: 
+  resource:
+  - module: docker
+    options:
+      interval: 5
+      containers:
+      - all

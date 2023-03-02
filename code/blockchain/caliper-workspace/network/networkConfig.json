@@ -1,0 +1,65 @@
+{
+    "version" : "1.0",
+    "name": "Caliper test",
+    "caliper" : {
+        "blockchain": "fabric"
+    },
+    "clients": {
+        "Admin@his1.jimson.com": {
+            "client": {
+                "credentialStore": {
+                    "path": "/tmp/his1",
+                    "cryptoStore": {
+                        "path": "/tmp/his1"
+                    }
+                },
+                "organization": "His1",
+                "clientPrivateKey": {
+                    "path": "../crypto-config/peerOrganizations/his1.jimson.com/users/Admin@his1.jimson.com/msp/keystore/priv_sk"
+                },
+                "clientSignedCert": {
+                    "path": "../crypto-config/peerOrganizations/his1.jimson.com/users/Admin@his1.jimson.com/msp/signcerts/Admin@his1.jimson.com-cert.pem"
+                },
+                "connection": {
+                    "timeout": {
+                        "peer": {
+                            "endorser": "300"
+                        }
+                    }
+                }
+
+            }
+        }
+    },
+    "channels" : {
+        "mychannel": {
+            "created": true,
+            "contracts": [
+                {
+                    "id":"emr",
+                    "version":"1.0"
+                }
+            ]
+        }
+    },
+    "organizations" : {
+        "His1": {
+            "mspid": "His1MSP",
+            "peers": [
+                "peer0.his1.jimson.com"
+            ]
+        }
+    },
+    "peers" : {
+        "peer0.his1.jimson.com": {
+            "url": "grpcs://peer0.his1.jimson.com:7051",
+            "tlsCACerts": {
+                "path": "../crypto-config/peerOrganizations/his1.jimson.com/users/Admin@his1.jimson.com/msp/tlscacerts/tlsca.his1.jimson.com-cert.pem"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.his1.jimson.com",
+                "hostnameOverride": "peer0.his1.jimson.com"
+            }
+        }
+    }
+}
